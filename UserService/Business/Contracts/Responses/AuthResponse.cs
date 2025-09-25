@@ -5,7 +5,6 @@ namespace Business.Contracts.Responses;
 public class AuthResponse
 {
   public string Token { get; set; } = null!;
-  public UserModel? User { get; set; }
   public string? Message { get; set; }
   public bool IsSuccess { get; set; }
 }

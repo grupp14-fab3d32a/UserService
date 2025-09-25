@@ -20,7 +20,7 @@ public class AuthService(UserManager<UserEntity> userManager, IConfiguration con
     var user = await _userManager.FindByEmailAsync(form.Email);
     if (user == null || !await _userManager.CheckPasswordAsync(user, form.Password))
     {
-      return new() { IsSuccess = false ,Message = "Invalid email or password." };
+      return new() { IsSuccess = false, Message = "Invalid email or password." };
     }
 
     var token = await GenerateJwtToken(user);
@@ -28,13 +28,13 @@ public class AuthService(UserManager<UserEntity> userManager, IConfiguration con
     return new()
     {
       IsSuccess = true,
-      User = new Models.UserModel
-      {
-        UserId = user.Id,
-        Email = user.Email!,
-        FirstName = user.FirstName,
-        LastName = user.LastName,
-      },
+      //User = new Models.UserModel
+      //{
+      //  UserId = user.Id,
+      //  Email = user.Email!,
+      //  FirstName = user.FirstName,
+      //  LastName = user.LastName,
+      //},
       Token = token
     };
   }
@@ -60,7 +60,8 @@ public class AuthService(UserManager<UserEntity> userManager, IConfiguration con
     {
       new (ClaimTypes.NameIdentifier, user.Id),
       new (ClaimTypes.Email, user.Email!),
-      new (ClaimTypes.Name, user.FirstName)
+      new (ClaimTypes.GivenName, user.FirstName),
+      new (ClaimTypes.Surname, user.LastName),
     };
 
     var roles = await _userManager.GetRolesAsync(user);
