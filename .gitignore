@@ -429,3 +429,5 @@ FodyWeavers.xsd
 /UserService/UserServiceApi/appsettings.json
 /UserService/UserServiceApi/appsettings.json
 /UserService/UserServiceApi/appsettings.Development.json
+/UserService/UserServiceApi/appsettings.json
+/UserService/UserService.http
