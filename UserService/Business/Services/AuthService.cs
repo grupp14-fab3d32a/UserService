@@ -28,13 +28,6 @@ public class AuthService(UserManager<UserEntity> userManager, IConfiguration con
     return new()
     {
       IsSuccess = true,
-      //User = new Models.UserModel
-      //{
-      //  UserId = user.Id,
-      //  Email = user.Email!,
-      //  FirstName = user.FirstName,
-      //  LastName = user.LastName,
-      //},
       Token = token
     };
   }
