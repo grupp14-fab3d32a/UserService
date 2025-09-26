@@ -38,8 +38,9 @@ public class AuthService(UserManager<UserEntity> userManager, IConfiguration con
     var result = await _userManager.CreateAsync(entity, form.Password);
     if (!result.Succeeded)
     {
-      var errors = string.Join("; ", result.Errors.Select(e => e.Description));
-      return new() { IsSuccess = false, Message = string.Join(",", result.Errors.Select(e => e.Description)) };
+      //var errors = string.Join("; ", result.Errors.Select(e => e.Description));
+      //return new() { IsSuccess = false, Message = string.Join(",", result.Errors.Select(e => e.Description)) };
+      return new() { IsSuccess = false, Errors = result.Errors };
     }
 
     await _userManager.AddToRoleAsync(entity, "User");
