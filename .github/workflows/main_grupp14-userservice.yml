@@ -61,7 +61,8 @@ jobs:
         with:
           app-name: 'grupp14-userService'
           slot-name: 'Production'
-          package: ./myapp
+          package: ./publish
 
           
+
 
