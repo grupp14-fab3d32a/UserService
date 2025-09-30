@@ -29,10 +29,13 @@ public class UserController(IAuthService authService) : ControllerBase
       return BadRequest(ModelState);
 
     var response = await _authService.RegisterAsync(form);
-    if (!response.IsSuccess)
-      return BadRequest(new { response.Message });
+    if (response.IsSuccess)
+      return Ok(new { response.Message });
 
-    return Ok(new { response.Message });
+    if (response.Errors!.Any(e => e.Code == "DuplicateEmail"))
+      return Conflict(new { response.Errors });
+
+    return BadRequest(new { response.Errors });
   }
 
 }
