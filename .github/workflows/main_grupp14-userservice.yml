@@ -23,14 +23,11 @@ jobs:
         with:
           dotnet-version: '9.x'
 
-      - name: Restore dependencies
-        run: dotnet restore ./UserService/UserService.csproj
-        
-      - name: Build project
-        run: dotnet build ./UserService/UserService.csproj --configuration Release --no-restore
+      - name: Build with dotnet
+        run: dotnet build ./UserService/UserService.sln --configuration Release
 
-      - name: Publish project
-        run: dotnet publish ./UserService/UserService.csproj -c Release -o ./publish --no-build
+      - name: dotnet publish
+        run: dotnet publish ./UserService/UserService.sln -c Release -o ./publish --no-build
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
@@ -67,6 +64,7 @@ jobs:
           package: ./.net-app
 
           
+
 
 
 
