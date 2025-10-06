@@ -10,7 +10,7 @@ public class DbSeeder
   {
     using var scope = serviceProvider.CreateScope();
     var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
-    string[] roleNames = { "Admin", "User" };
+    string[] roleNames = { "Admin", "Member" };
 
     foreach (var roleName in roleNames)
     {

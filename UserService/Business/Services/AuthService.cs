@@ -43,7 +43,7 @@ public class AuthService(UserManager<UserEntity> userManager, IConfiguration con
       return new() { IsSuccess = false, Errors = result.Errors };
     }
 
-    await _userManager.AddToRoleAsync(entity, "User");
+    await _userManager.AddToRoleAsync(entity, "Member");
 
     return new() { IsSuccess = true, Message = "User registered successfully." };
   }
